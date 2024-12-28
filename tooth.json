@@ -1,25 +1,27 @@
 {
     "format_version": 2,
-    "tooth": "my-mod",
-    "version": "0.0.0",
+    "tooth": "github.com/mrmagic2020/MWelcome",
+    "version": "0.0.1",
     "info": {
-        "name": "My Mod Name",
-        "description": "My Mod Description",
-        "author": "My Name",
+        "name": "MWelcome",
+        "description": "A simple customizable plugin to welcome your fellow players to your server.",
+        "author": "mrmagic2020",
         "tags": [
-            "platform:levilamina",
-            "type:mod"
+            "levilamina",
+            "mod",
+            "welcome",
+            "m-series"
         ]
     },
-    "asset_url": "My Asset Url",
+    "asset_url": "https://github.com/mrmagic2020/MWelcome/releases/latest",
     "prerequisites": {
-        "github.com/LiteLDev/LeviLamina": "My LeviLamina Dependency Version"
+        "github.com/LiteLDev/LeviLamina": "0.13.x"
     },
     "files": {
         "place": [
             {
-                "src": "my-mod/*",
-                "dest": "plugins/my-mod/"
+                "src": "MWelcome/*",
+                "dest": "plugins/MWelcome/"
             }
         ]
     }
