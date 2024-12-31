@@ -9,7 +9,7 @@ class MyMod {
 public:
     static MyMod& getInstance();
 
-    MyMod(ll::mod::NativeMod& self) : mSelf(self) {}
+    MyMod() : mSelf(*ll::mod::NativeMod::current()) {}
 
     [[nodiscard]] ll::mod::NativeMod& getSelf() const { return mSelf; }
 
@@ -23,8 +23,8 @@ public:
     bool disable();
 
     // TODO: Implement this method if you need to unload the mod.
-    // /// @return True if the mod is unloaded successfully.
-    // bool unload();
+    /// @return True if the mod is unloaded successfully.
+    bool unload();
 
 private:
     ll::mod::NativeMod& mSelf;
