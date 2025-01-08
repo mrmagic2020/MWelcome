@@ -20,7 +20,7 @@ A simple customizable plugin to welcome your fellow players to your server.
 
 Upon first run, MWelcome will generate a **config.json** file in **plugins/MWelcome/config/**, which will look like this:
 
-```json
+```jsonc
 {
   // The version of the config file. Do NOT modify.
   "version": 1,
@@ -45,6 +45,6 @@ Upon first run, MWelcome will generate a **config.json** file in **plugins/MWelc
 
 | Type  | Image                                                                                 |
 | ----- | ------------------------------------------------------------------------------------- |
-| toast | ![toast](https://github.com/mrmagic2020/MWelcome/blob/main/assets/toast.png?raw=true) |
-| chat  | ![chat](https://github.com/mrmagic2020/MWelcome/blob/main/assets/chat.png?raw=true)   |
-| tip   | ![tip](https://github.com/mrmagic2020/MWelcome/blob/main/assets/tip.png?raw=true)     |
+| toast | ![toast](https://github.com/mrmagic2020/MWelcome/blob/main/assets/toast.jpg?raw=true) |
+| chat  | ![chat](https://github.com/mrmagic2020/MWelcome/blob/main/assets/chat.jpg?raw=true)   |
+| tip   | ![tip](https://github.com/mrmagic2020/MWelcome/blob/main/assets/tip.jpg?raw=true)     |
