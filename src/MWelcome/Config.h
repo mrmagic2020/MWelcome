@@ -15,9 +15,9 @@ struct Config
 {
     int version = 1;
     std::string type = "toast";
-    std::string toast_title = "§lWelcome to the §bPinnacle§r§l!§r";
+    std::string toast_title = "§lWelcome to the §bServer§r§l!§r";
     std::string toast_content = "Enjoy your stay, §o§6{}§r!";
-    std::string msg_content = "§lWelcome to the §bPinnacle§r, §o§6{}§r!";
+    std::string msg_content = "§lWelcome to the §bServer§r, §o§6{}§r!";
 
     [[nodiscard]] WelcomeType getType()
     {

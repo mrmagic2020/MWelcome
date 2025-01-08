@@ -1,19 +1,20 @@
 {
     "format_version": 2,
     "tooth": "github.com/mrmagic2020/MWelcome",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "info": {
         "name": "MWelcome",
         "description": "A simple customizable plugin to welcome your fellow players to your server.",
         "author": "mrmagic2020",
         "source": "github.com/mrmagic2020/MWelcome",
         "tags": [
-            "levilamina",
-            "mod",
+            "platform:levilamina",
+            "type:mod",
             "welcome",
             "m-series"
         ]
     },
+    "asset_url": "https://github.com/mrmagic2020/MWelcome/releases/download/v$(version)/MWelcome-windows-x64.zip",
     "prerequisites": {
         "github.com/LiteLDev/LeviLamina": ">=0.13.5"
     },

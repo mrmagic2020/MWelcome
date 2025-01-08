@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.1.1] - 2025-01-08
+
+### Added
+
+- Support for Levilamina v1.0.0+.
+
 ## [0.1.0] - 2024-12-31
 
 ### Added
@@ -10,6 +16,7 @@
 
 All notable changes to this project will be documented in this file.
 
+[0.1.1]: https://github.com/mrmagic2020/MWelcome/releases/v0.1.1
 [0.1.0]: https://github.com/mrmagic2020/MWelcome/releases/v0.1.0
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
