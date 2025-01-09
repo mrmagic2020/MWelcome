@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.2.0] - 2025-01-11
+
+### Added
+
+- Admins can now edit configuration options in-game with GUI using the `/mwelcome` command, which takes effect immediately.
+
 ## [0.1.1] - 2025-01-08
 
 ### Added
@@ -16,6 +22,7 @@
 
 All notable changes to this project will be documented in this file.
 
+[0.2.0]: https://github.com/mrmagic2020/MWelcome/releases/v0.2.0
 [0.1.1]: https://github.com/mrmagic2020/MWelcome/releases/v0.1.1
 [0.1.0]: https://github.com/mrmagic2020/MWelcome/releases/v0.1.0
 

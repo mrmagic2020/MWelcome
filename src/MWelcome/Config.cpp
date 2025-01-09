@@ -1,22 +1,40 @@
+#include <ll/api/Config.h>
+#include <ll/api/mod/NativeMod.h>
+
+#include <filesystem>
+
 #include "Config.h"
-#include "ll/api/Config.h"
-#include "ll/api/mod/NativeMod.h"
 
-namespace mwelcome::configuration
+namespace mwelcome::config
 {
-bool init(ll::mod::NativeMod& mod, Config& config)
+Config _config;
+std::filesystem::path _configPath;
+
+bool init(ll::mod::NativeMod& mod)
 {
-    auto& logger = mod.getLogger();
-    const auto& configPath = mod.getConfigDir() / "config.json";
-    if (!ll::config::loadConfig(config, configPath))
+    _configPath = mod.getConfigDir() / "config.json";
+    return load();
+}
+
+Config& get() { return _config; }
+
+bool set(const Config& config, bool save)
+{
+    _config = config;
+    if (save)
     {
-        logger.warn("Cannot load configurations from {}", configPath);
-        logger.info("Generating default configurations");
+        return ll::config::saveConfig(_config, _configPath);
+    }
+    return true;
+}
 
-        if (!ll::config::saveConfig(config, configPath))
+bool load()
+{
+    if (!ll::config::loadConfig(_config, _configPath))
+    {
+
+        if (!ll::config::saveConfig(_config, _configPath))
         {
-            logger.error("Cannot save default configurations to {}",
-                         configPath);
             return false;
         }
     }

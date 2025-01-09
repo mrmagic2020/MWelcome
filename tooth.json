@@ -1,7 +1,7 @@
 {
     "format_version": 2,
     "tooth": "github.com/mrmagic2020/MWelcome",
-    "version": "0.1.1",
+    "version": "0.2.0",
     "info": {
         "name": "MWelcome",
         "description": "A simple customizable plugin to welcome your fellow players to your server.",

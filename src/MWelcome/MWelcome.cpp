@@ -6,28 +6,24 @@
 #include <ll/api/io/FileUtils.h>
 #include <ll/api/mod/ModManagerRegistry.h>
 #include <ll/api/mod/NativeMod.h>
+#include <ll/api/mod/RegisterHelper.h>
 #include <ll/api/service/Bedrock.h>
 #include <mc/network/packet/TextPacket.h>
 #include <mc/network/packet/TextPacketType.h>
 #include <mc/network/packet/ToastRequestPacket.h>
-#include <mc/server/commands/CommandOrigin.h>
-#include <mc/server/commands/CommandOutput.h>
-#include <mc/server/commands/CommandPermissionLevel.h>
 #include <mc/world/actor/player/Player.h>
 #include <mc/world/level/Level.h>
 
 #include <format>
 
+#include "Command.h"
 #include "Config.h"
 #include "MWelcome.h"
-#include "ll/api/mod/RegisterHelper.h"
 
 ll::event::ListenerPtr playerJoinEventListener;
 
 namespace mwelcome
 {
-Config config;
-
 MyMod& MyMod::getInstance()
 {
     static MyMod instance;
@@ -37,8 +33,8 @@ MyMod& MyMod::getInstance()
 bool MyMod::load()
 {
     auto& logger = getSelf().getLogger();
-    logger.info("Loading...");
-    if (!configuration::init(getSelf(), config))
+    logger.debug("Loading...");
+    if (!config::init(getSelf()))
     {
         return false;
     }
@@ -48,7 +44,7 @@ bool MyMod::load()
 bool MyMod::enable()
 {
     auto& logger = getSelf().getLogger();
-    logger.info("Starting up...");
+    logger.debug("Starting up...");
 
     auto& eventBus = ll::event::EventBus::getInstance();
 
@@ -59,18 +55,21 @@ bool MyMod::enable()
                 const std::string& playerName = player.getRealName();
 
                 TextPacket chat_pkt;
+                const Config config = config::get();
                 switch (config.getType())
                 {
                     case WelcomeType::CHAT:
                         chat_pkt.mType = TextPacketType::SystemMessage;
-                        chat_pkt.mMessage = std::vformat(
-                            config.msg_content, std::make_format_args(playerName));
+                        chat_pkt.mMessage =
+                            std::vformat(config.msg_content,
+                                         std::make_format_args(playerName));
                         player.sendNetworkPacket(chat_pkt);
                         break;
                     case WelcomeType::TIP:
                         chat_pkt.mType = TextPacketType::Tip;
-                        chat_pkt.mMessage = std::vformat(
-                            config.msg_content, std::make_format_args(playerName));
+                        chat_pkt.mMessage =
+                            std::vformat(config.msg_content,
+                                         std::make_format_args(playerName));
                         player.sendNetworkPacket(chat_pkt);
                         break;
                     case WelcomeType::TOAST:
@@ -89,6 +88,9 @@ bool MyMod::enable()
                 }
             });
 
+    cmd::init();
+
+    logger.info("Enabled!");
     return true;
 }
 

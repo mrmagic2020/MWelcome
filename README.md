@@ -41,7 +41,7 @@ Upon first run, MWelcome will generate a **config.json** file in **plugins/MWelc
 ```
 
 > [!IMPORTANT]
-> You will need to restart your server for the changes to take effect.
+> You will need to restart your server for the changes to take effect. Alternatively, admins can run **"/mwelcome"** in-game and use the GUI to edit the configuration options, which will take effect immediately.
 
 | Type  | Image                                                                                 |
 | ----- | ------------------------------------------------------------------------------------- |
