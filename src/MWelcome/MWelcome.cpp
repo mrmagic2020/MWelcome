@@ -14,13 +14,10 @@
 #include <mc/world/actor/player/Player.h>
 #include <mc/world/level/Level.h>
 
-#include <format>
-
 #include "Command.h"
 #include "Config.h"
+#include "Event.h"
 #include "MWelcome.h"
-
-ll::event::ListenerPtr playerJoinEventListener;
 
 namespace mwelcome
 {
@@ -34,7 +31,7 @@ bool MyMod::load()
 {
     auto& logger = getSelf().getLogger();
     logger.debug("Loading...");
-    if (!config::init(getSelf()))
+    if (!config::init())
     {
         return false;
     }
@@ -46,48 +43,7 @@ bool MyMod::enable()
     auto& logger = getSelf().getLogger();
     logger.debug("Starting up...");
 
-    auto& eventBus = ll::event::EventBus::getInstance();
-
-    playerJoinEventListener =
-        eventBus.emplaceListener<ll::event::player::PlayerJoinEvent>(
-            [&logger](ll::event::player::PlayerJoinEvent& e) {
-                Player& player = e.self();
-                const std::string& playerName = player.getRealName();
-
-                TextPacket chat_pkt;
-                const Config config = config::get();
-                switch (config.getType())
-                {
-                    case WelcomeType::CHAT:
-                        chat_pkt.mType = TextPacketType::SystemMessage;
-                        chat_pkt.mMessage =
-                            std::vformat(config.msg_content,
-                                         std::make_format_args(playerName));
-                        player.sendNetworkPacket(chat_pkt);
-                        break;
-                    case WelcomeType::TIP:
-                        chat_pkt.mType = TextPacketType::Tip;
-                        chat_pkt.mMessage =
-                            std::vformat(config.msg_content,
-                                         std::make_format_args(playerName));
-                        player.sendNetworkPacket(chat_pkt);
-                        break;
-                    case WelcomeType::TOAST:
-                    {
-                        ToastRequestPacket toast_pkt(
-                            std::vformat(config.toast_title,
-                                         std::make_format_args(playerName)),
-                            std::vformat(config.toast_content,
-                                         std::make_format_args(playerName)));
-                        player.sendNetworkPacket(toast_pkt);
-                        break;
-                    }
-                    default:
-                        logger.error("Unknown welcome type: {}", config.type);
-                        break;
-                }
-            });
-
+    event::init();
     cmd::init();
 
     logger.info("Enabled!");
@@ -98,8 +54,7 @@ bool MyMod::disable()
 {
     auto& logger = getSelf().getLogger();
     logger.debug("Disabling...");
-    auto& eventBus = ll::event::EventBus::getInstance();
-    eventBus.removeListener(playerJoinEventListener);
+    event::unreg();
     return true;
 }
 

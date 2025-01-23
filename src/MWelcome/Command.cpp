@@ -9,20 +9,22 @@
 #include <mc/world/actor/Actor.h>
 #include <mc/world/actor/ActorType.h>
 
-#include <stdexcept>
 #include <string>
 
 #include "Config.h"
+#include "MWelcome.h"
 #include "Ui.h"
 
 namespace mwelcome::cmd
 {
 bool init()
 {
+    auto& logger = MyMod::getInstance().getSelf().getLogger();
     auto commandRegistry = ll::service::getCommandRegistry();
     if (!commandRegistry)
     {
-        throw std::runtime_error("Failed to load command registry");
+        logger.error("Failed to get command registry.");
+        return false;
     }
 
     auto& command =
@@ -80,6 +82,7 @@ bool init()
         });
     });
 
+    logger.debug("Command registered.");
     return true;
 }
 }  // namespace mwelcome::cmd

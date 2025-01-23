@@ -3,9 +3,6 @@
 #include <magic_enum.hpp>
 #include <string>
 
-#include "ll/api/mod/NativeMod.h"
-
-
 enum class WelcomeType
 {
     CHAT,
@@ -60,7 +57,7 @@ struct Config
 
 namespace mwelcome::config
 {
-bool init(ll::mod::NativeMod& mod);
+bool init();
 Config& get();
 bool set(const Config& config, bool save = true);
 bool load();

@@ -4,15 +4,16 @@
 #include <filesystem>
 
 #include "Config.h"
+#include "MWelcome.h"
 
 namespace mwelcome::config
 {
 Config _config;
 std::filesystem::path _configPath;
 
-bool init(ll::mod::NativeMod& mod)
+bool init()
 {
-    _configPath = mod.getConfigDir() / "config.json";
+    _configPath = MyMod::getInstance().getSelf().getConfigDir() / "config.json";
     return load();
 }
 
@@ -30,14 +31,19 @@ bool set(const Config& config, bool save)
 
 bool load()
 {
+    auto& logger = MyMod::getInstance().getSelf().getLogger();
     if (!ll::config::loadConfig(_config, _configPath))
     {
-
+        logger.info("Config file not found at '{}', creating default config.",
+                    _configPath.string());
         if (!ll::config::saveConfig(_config, _configPath))
         {
+            logger.fatal("Failed to save default config to '{}'.",
+                         _configPath.string());
             return false;
         }
     }
+    logger.debug("Config loaded from '{}'.", _configPath.string());
     return true;
 }
 }  // namespace mwelcome::config
