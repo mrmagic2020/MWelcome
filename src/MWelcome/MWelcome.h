@@ -14,16 +14,16 @@ public:
     [[nodiscard]] ll::mod::NativeMod& getSelf() const { return mSelf; }
 
     /// @return True if the mod is loaded successfully.
-    bool load();
+    bool load() const;
 
     /// @return True if the mod is enabled successfully.
-    bool enable();
+    bool enable() const;
 
     /// @return True if the mod is disabled successfully.
-    bool disable();
+    bool disable() const;
 
     /// @return True if the mod is unloaded successfully.
-    bool unload();
+    bool unload() const;
 
 private:
     ll::mod::NativeMod& mSelf;

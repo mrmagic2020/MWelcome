@@ -1,3 +1,5 @@
+#include "Event.h"
+
 #include <ll/api/event/EventBus.h>
 #include <ll/api/event/ListenerBase.h>
 #include <ll/api/event/player/PlayerJoinEvent.h>
@@ -7,7 +9,6 @@
 #include <mc/world/actor/player/Player.h>
 
 #include "Config.h"
-#include "Event.h"
 #include "MWelcome.h"
 
 ll::event::ListenerPtr playerJoinEventListener;
@@ -21,13 +22,13 @@ bool init()
 
     playerJoinEventListener =
         eventBus.emplaceListener<ll::event::player::PlayerJoinEvent>(
-            [&logger](ll::event::player::PlayerJoinEvent& e) {
-                Player& player = e.self();
+            [&logger](const ll::event::player::PlayerJoinEvent& e)
+            {
+                const Player& player = e.self();
                 const std::string& playerName = player.getRealName();
 
                 TextPacket chat_pkt;
-                const Config config = config::get();
-                switch (config.getType())
+                switch (const Config config = config::get(); config.getType())
                 {
                     case WelcomeType::CHAT:
                         chat_pkt.mType = TextPacketType::SystemMessage;

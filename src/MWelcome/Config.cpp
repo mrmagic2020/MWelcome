@@ -1,9 +1,10 @@
+#include "Config.h"
+
 #include <ll/api/Config.h>
 #include <ll/api/mod/NativeMod.h>
 
 #include <filesystem>
 
-#include "Config.h"
 #include "MWelcome.h"
 
 namespace mwelcome::config
@@ -31,7 +32,7 @@ bool set(const Config& config, bool save)
 
 bool load()
 {
-    auto& logger = MyMod::getInstance().getSelf().getLogger();
+    const auto& logger = MyMod::getInstance().getSelf().getLogger();
     if (!ll::config::loadConfig(_config, _configPath))
     {
         logger.info("Config file not found at '{}', creating default config.",

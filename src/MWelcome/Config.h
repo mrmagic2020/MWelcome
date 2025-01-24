@@ -28,7 +28,7 @@ struct Config
         return WelcomeType::None;
     }
 
-    void setType(WelcomeType _type)
+    void setType(const WelcomeType _type)
     {
         switch (_type)
         {
@@ -49,7 +49,7 @@ struct Config
 
     void setType(const std::string& _type)
     {
-        WelcomeType t = magic_enum::enum_cast<WelcomeType>(_type).value_or(
+        const WelcomeType t = magic_enum::enum_cast<WelcomeType>(_type).value_or(
             WelcomeType::TOAST);
         setType(t);
     }

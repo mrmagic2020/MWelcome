@@ -1,3 +1,5 @@
+#pragma once
+
 namespace mwelcome::event
 {
 bool init();

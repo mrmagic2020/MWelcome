@@ -5,9 +5,9 @@
 
 namespace mwelcome::ui
 {
-ll::form::CustomForm* createSettingsForm(Config& config)
+ll::form::CustomForm* createSettingsForm(const Config& config)
 {
-    ll::form::CustomForm* form = new ll::form::CustomForm();
+    const auto form = new ll::form::CustomForm();
     form->setTitle("MWelcome Settings");
 
     form->appendDropdown(

@@ -27,9 +27,9 @@ MyMod& MyMod::getInstance()
     return instance;
 }
 
-bool MyMod::load()
+bool MyMod::load() const
 {
-    auto& logger = getSelf().getLogger();
+    const auto& logger = getSelf().getLogger();
     logger.debug("Loading...");
     if (!config::init())
     {
@@ -38,9 +38,9 @@ bool MyMod::load()
     return true;
 }
 
-bool MyMod::enable()
+bool MyMod::enable() const
 {
-    auto& logger = getSelf().getLogger();
+    const auto& logger = getSelf().getLogger();
     logger.debug("Starting up...");
 
     event::init();
@@ -50,17 +50,17 @@ bool MyMod::enable()
     return true;
 }
 
-bool MyMod::disable()
+bool MyMod::disable() const
 {
-    auto& logger = getSelf().getLogger();
+    const auto& logger = getSelf().getLogger();
     logger.debug("Disabling...");
     event::unreg();
     return true;
 }
 
-bool MyMod::unload()
+bool MyMod::unload() const
 {
-    auto& logger = getSelf().getLogger();
+    const auto& logger = getSelf().getLogger();
     logger.debug("Unloading...");
     return true;
 }
