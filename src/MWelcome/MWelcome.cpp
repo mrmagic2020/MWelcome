@@ -1,4 +1,5 @@
-#include <fmt/format.h>
+#include "MWelcome.h"
+
 #include <ll/api/Config.h>
 #include <ll/api/event/EventBus.h>
 #include <ll/api/io/FileUtils.h>
@@ -10,7 +11,6 @@
 #include "Command.h"
 #include "Config.h"
 #include "Event.h"
-#include "MWelcome.h"
 
 namespace mwelcome
 {

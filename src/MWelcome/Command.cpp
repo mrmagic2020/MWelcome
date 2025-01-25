@@ -41,7 +41,7 @@ bool init()
                 return;
             }
 
-            auto* player = static_cast<Player*>(entity);
+            auto*                 player = dynamic_cast<Player*>(entity);
             ll::form::CustomForm* form = ui::createSettingsForm(config::get());
             form->sendTo(
                 *player,

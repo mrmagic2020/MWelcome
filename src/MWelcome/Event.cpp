@@ -17,14 +17,14 @@ namespace mwelcome::event
 {
 bool init()
 {
-    auto& logger = MyMod::getInstance().getSelf().getLogger();
+    auto& logger   = MyMod::getInstance().getSelf().getLogger();
     auto& eventBus = ll::event::EventBus::getInstance();
 
     playerJoinEventListener =
         eventBus.emplaceListener<ll::event::player::PlayerJoinEvent>(
             [&logger](const ll::event::player::PlayerJoinEvent& e)
             {
-                const Player& player = e.self();
+                const Player&      player     = e.self();
                 const std::string& playerName = player.getRealName();
 
                 TextPacket chat_pkt;

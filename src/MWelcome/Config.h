@@ -14,11 +14,11 @@ enum class WelcomeType
 
 struct Config
 {
-    int version = 1;
-    std::string type = "toast";
-    std::string toast_title = "§lWelcome to the §bServer§r§l!§r";
+    int         version       = 1;
+    std::string type          = "toast";
+    std::string toast_title   = "§lWelcome to the §bServer§r§l!§r";
     std::string toast_content = "Enjoy your stay, §o§6{}§r!";
-    std::string msg_content = "§lWelcome to the §bServer§r, §o§6{}§r!";
+    std::string msg_content   = "§lWelcome to the §bServer§r, §o§6{}§r!";
 
     [[nodiscard]] WelcomeType getType() const
     {
@@ -39,8 +39,6 @@ struct Config
                 type = "tip";
                 break;
             case WelcomeType::TOAST:
-                type = "toast";
-                break;
             default:
                 type = "toast";
                 break;
@@ -49,16 +47,17 @@ struct Config
 
     void setType(const std::string& _type)
     {
-        const WelcomeType t = magic_enum::enum_cast<WelcomeType>(_type).value_or(
-            WelcomeType::TOAST);
+        const WelcomeType t =
+            magic_enum::enum_cast<WelcomeType>(_type).value_or(
+                WelcomeType::TOAST);
         setType(t);
     }
 };
 
 namespace mwelcome::config
 {
-bool init();
+bool    init();
 Config& get();
-bool set(const Config& config, bool save = true);
-bool load();
+bool    set(const Config& config, bool save = true);
+bool    load();
 }  // namespace mwelcome::config

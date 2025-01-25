@@ -2,10 +2,11 @@
 
 #include "ll/api/mod/NativeMod.h"
 
-namespace mwelcome {
+namespace mwelcome
+{
 
-class MyMod {
-
+class MyMod
+{
 public:
     static MyMod& getInstance();
 
@@ -29,4 +30,4 @@ private:
     ll::mod::NativeMod& mSelf;
 };
 
-} // namespace mwelcome
+}  // namespace mwelcome

@@ -9,7 +9,7 @@
 
 namespace mwelcome::config
 {
-Config _config;
+Config                _config;
 std::filesystem::path _configPath;
 
 bool init()
