@@ -1,5 +1,15 @@
 # Changelog
 
+## [Unreleased]
+
+### Added
+
+- Translations for Chinese (Simplified).
+
+### Removed
+
+- Support for Levilamina <=1.0.0-rc.2.
+
 ## [0.2.0] - 2025-01-11
 
 ### Added

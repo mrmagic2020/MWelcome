@@ -1,0 +1,18 @@
+{
+  "command": {
+    "mwelcome": {
+      "description": "配置 MWelcome。",
+      "success": "[MWelcome] §a设置更新成功。",
+      "error": "[MWelcome] §c设置更新失败。"
+    }
+  },
+  "ui": {
+    "settings": {
+      "title": "MWelcome 设置",
+      "welcome_type": "欢迎类型",
+      "toast_title": "Toast 标题",
+      "toast_content": "Toast 内容",
+      "msg_content": "普通消息内容"
+    }
+  }
+}

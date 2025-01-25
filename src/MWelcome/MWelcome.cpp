@@ -1,16 +1,12 @@
 #include "MWelcome.h"
 
-#include <ll/api/Config.h>
-#include <ll/api/event/EventBus.h>
-#include <ll/api/io/FileUtils.h>
-#include <ll/api/mod/ModManagerRegistry.h>
 #include <ll/api/mod/NativeMod.h>
 #include <ll/api/mod/RegisterHelper.h>
-#include <mc/network/packet/TextPacket.h>
 
 #include "Command.h"
 #include "Config.h"
 #include "Event.h"
+#include "i18n.h"
 
 namespace mwelcome
 {
@@ -24,7 +20,7 @@ bool MyMod::load() const
 {
     const auto& logger = getSelf().getLogger();
     logger.debug("Loading...");
-    if (!config::init())
+    if (!config::init() || !i18n::init())
     {
         return false;
     }

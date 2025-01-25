@@ -1,0 +1,18 @@
+{
+  "command": {
+    "mwelcome": {
+      "description": "Configure MWelcome settings.",
+      "success": "[MWelcome] §aSettings updated successfully.",
+      "error": "[MWelcome] §cFailed to update settings."
+    }
+  },
+  "ui": {
+    "settings": {
+      "title": "MWelcome Settings",
+      "welcome_type": "Welcome Type",
+      "toast_title": "Toast Title",
+      "toast_content": "Toast Content",
+      "msg_content": "Message Content"
+    }
+  }
+}

@@ -2,6 +2,7 @@
 #include <ll/api/command/CommandHandle.h>
 #include <ll/api/command/CommandRegistrar.h>
 #include <ll/api/form/CustomForm.h>
+#include <ll/api/i18n/I18n.h>
 #include <ll/api/service/Bedrock.h>
 #include <mc/server/commands/CommandOrigin.h>
 #include <mc/server/commands/CommandOutput.h>
@@ -17,6 +18,8 @@
 
 namespace mwelcome::cmd
 {
+using ll::i18n_literals::operator""_tr;
+
 bool init()
 {
     const auto& logger = MyMod::getInstance().getSelf().getLogger();
@@ -29,7 +32,7 @@ bool init()
 
     auto& command =
         ll::command::CommandRegistrar::getInstance().getOrCreateCommand(
-            "mwelcome", "Configure MWelcome settings.",
+            "mwelcome", "command.mwelcome.description"_tr(),
             CommandPermissionLevel::GameDirectors);
     command.overload().execute(
         [](CommandOrigin const& origin, CommandOutput& output)
@@ -41,7 +44,7 @@ bool init()
                 return;
             }
 
-            auto*                 player = dynamic_cast<Player*>(entity);
+            auto*                 player = static_cast<Player*>(entity);
             ll::form::CustomForm* form = ui::createSettingsForm(config::get());
             form->sendTo(
                 *player,
@@ -54,37 +57,32 @@ bool init()
                     }
 
                     Config& config = config::get();
-                    for (auto& entry : res.value())
+                    for (const auto& [key, val] : res.value())
                     {
-                        if (entry.first == "type")
+                        if (key == "type")
                         {
-                            config.setType(std::get<std::string>(entry.second));
+                            config.setType(std::get<std::string>(val));
                         }
-                        else if (entry.first == "toast_title")
+                        else if (key == "toast_title")
                         {
-                            config.toast_title =
-                                std::get<std::string>(entry.second);
+                            config.toast_title = std::get<std::string>(val);
                         }
-                        else if (entry.first == "toast_content")
+                        else if (key == "toast_content")
                         {
-                            config.toast_content =
-                                std::get<std::string>(entry.second);
+                            config.toast_content = std::get<std::string>(val);
                         }
-                        else if (entry.first == "msg_content")
+                        else if (key == "msg_content")
                         {
-                            config.msg_content =
-                                std::get<std::string>(entry.second);
+                            config.msg_content = std::get<std::string>(val);
                         }
                     }
                     if (config::set(config, true))
                     {
-                        _player.sendMessage(
-                            "[MWelcome] §aSettings updated successfully.");
+                        _player.sendMessage("command.mwelcome.success"_tr());
                     }
                     else
                     {
-                        _player.sendMessage(
-                            "[MWelcome] §cFailed to update settings.");
+                        _player.sendMessage("command.mwelcome.error"_tr());
                     }
                 });
         });

@@ -42,10 +42,7 @@ target("MWelcome") -- Change this to your mod name.
     add_includedirs("D:/Windows Kits/10/Include/10.0.22621.0/um")
     add_includedirs("D:/Windows Kits/10/Include/10.0.22621.0/winrt")
     add_includedirs("D:/Windows Kits/10/Include/10.0.22621.0/cppwinrt")
-    -- if is_config("target_type", "server") then
-    --     add_includedirs("src-server")
-    --     add_files("src-server/**.cpp")
-    -- else
-    --     add_includedirs("src-client")
-    --     add_files("src-client/**.cpp")
-    -- end
+
+    after_build(function(target)
+        import("scripts.after_build").copy_lang(target, target:name())
+    end)
