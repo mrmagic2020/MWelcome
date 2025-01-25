@@ -1,18 +1,11 @@
 #include <fmt/format.h>
 #include <ll/api/Config.h>
 #include <ll/api/event/EventBus.h>
-#include <ll/api/event/ListenerBase.h>
-#include <ll/api/event/player/PlayerJoinEvent.h>
 #include <ll/api/io/FileUtils.h>
 #include <ll/api/mod/ModManagerRegistry.h>
 #include <ll/api/mod/NativeMod.h>
 #include <ll/api/mod/RegisterHelper.h>
-#include <ll/api/service/Bedrock.h>
 #include <mc/network/packet/TextPacket.h>
-#include <mc/network/packet/TextPacketType.h>
-#include <mc/network/packet/ToastRequestPacket.h>
-#include <mc/world/actor/player/Player.h>
-#include <mc/world/level/Level.h>
 
 #include "Command.h"
 #include "Config.h"
