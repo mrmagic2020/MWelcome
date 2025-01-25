@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [0.2.1] - 2025-01-25
+
 ### Added
 
 - Translations for Chinese (Simplified).
@@ -32,6 +34,7 @@
 
 All notable changes to this project will be documented in this file.
 
+[0.2.1]: https://github.com/mrmagic2020/MWelcome/releases/v0.2.1
 [0.2.0]: https://github.com/mrmagic2020/MWelcome/releases/v0.2.0
 [0.1.1]: https://github.com/mrmagic2020/MWelcome/releases/v0.1.1
 [0.1.0]: https://github.com/mrmagic2020/MWelcome/releases/v0.1.0
