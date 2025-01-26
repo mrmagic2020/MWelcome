@@ -15,14 +15,17 @@ namespace mwelcome::event
 {
 bool init()
 {
-    auto& logger   = MyMod::getInstance().getSelf().getLogger();
-    auto& eventBus = ll::event::EventBus::getInstance();
+    const auto& logger   = MyMod::getInstance().getSelf().getLogger();
+    auto&       eventBus = ll::event::EventBus::getInstance();
 
     playerJoinEventListener =
         eventBus.emplaceListener<ll::event::player::PlayerJoinEvent>(
             [](const ll::event::player::PlayerJoinEvent& e)
             {
-                core::sendWelcomeMessage(e.self(), std::nullopt, std::nullopt);
+                if (const Config& config = config::get();
+                    config.send_to_all_players)
+                    core::sendGlobalWelcomeMessage(e.self().getRealName());
+                else core::sendSingleWelcomeMessage(e.self());
             });
 
     logger.debug("Event registered.");

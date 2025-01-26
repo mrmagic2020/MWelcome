@@ -33,6 +33,9 @@ ll::form::CustomForm* createSettingsForm(const Config& config)
     const auto form = new ll::form::CustomForm();
     form->setTitle("ui.settings.title"_tr());
 
+    form->appendToggle("send_to_all_players",
+                       "ui.settings.send_to_all_players"_tr(),
+                       config.send_to_all_players);
     form->appendDropdown(
         "type", "ui.settings.welcome_type"_tr(),
         std::vector<std::string>(magic_enum::enum_names<WelcomeType>().begin(),

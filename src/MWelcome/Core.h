@@ -5,8 +5,8 @@
 
 namespace mwelcome::core
 {
-void sendWelcomeMessage(Player& player,
-                        std::optional<ll::form::ModalFormResult> res,
-                        std::optional<ll::form::FormCancelReason>);
+void sendSingleWelcomeMessage(
+    Player& player, std::optional<ll::form::ModalFormResult> res = std::nullopt,
+    std::optional<ll::form::FormCancelReason> = std::nullopt);
 void sendGlobalWelcomeMessage(const std::string& playerName);
 }  // namespace mwelcome::core

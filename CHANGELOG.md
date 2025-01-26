@@ -6,6 +6,8 @@
 
 - Operators can now preview welcome messages in-game with GUI after saving configuration options.
 
+- Option to send the welcome message to every online player when a player joins the server.
+
 ## [0.2.1] - 2025-01-25
 
 ### Added

@@ -7,6 +7,7 @@
     "ui": {
         "settings": {
             "title": "MWelcome 设置",
+            "send_to_all_players": "发送给所有玩家",
             "welcome_type": "欢迎类型",
             "toast_title": "Toast 标题",
             "toast_content": "Toast 内容",

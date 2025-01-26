@@ -60,7 +60,12 @@ bool init()
                     Config& config = config::get();
                     for (const auto& [key, val] : res.value())
                     {
-                        if (key == "type")
+                        if (key == "send_to_all_players")
+                        {
+                            config.send_to_all_players =
+                                std::get<unsigned long long>(val);
+                        }
+                        else if (key == "type")
                         {
                             config.setType(std::get<std::string>(val));
                         }
@@ -78,10 +83,8 @@ bool init()
                         }
                     }
                     if (config::set(config, true))
-
                         ui::createSettingsFeedbackForm(true)->sendTo(
-                            _player, core::sendWelcomeMessage);
-
+                            _player, core::sendSingleWelcomeMessage);
                     else ui::createSettingsFeedbackForm(false)->sendTo(_player);
                 });
         });
