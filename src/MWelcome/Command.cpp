@@ -13,6 +13,7 @@
 #include <string>
 
 #include "Config.h"
+#include "Core.h"
 #include "MWelcome.h"
 #include "Ui.h"
 
@@ -48,7 +49,7 @@ bool init()
             ll::form::CustomForm* form = ui::createSettingsForm(config::get());
             form->sendTo(
                 *player,
-                [](const Player& _player, ll::form::CustomFormResult const& res,
+                [](Player& _player, ll::form::CustomFormResult const& res,
                    const ll::form::FormCancelReason reason)
                 {
                     if (reason.has_value() || !res.has_value())
@@ -77,13 +78,11 @@ bool init()
                         }
                     }
                     if (config::set(config, true))
-                    {
-                        _player.sendMessage("command.mwelcome.success"_tr());
-                    }
-                    else
-                    {
-                        _player.sendMessage("command.mwelcome.error"_tr());
-                    }
+
+                        ui::createSettingsFeedbackForm(true)->sendTo(
+                            _player, core::sendWelcomeMessage);
+
+                    else ui::createSettingsFeedbackForm(false)->sendTo(_player);
                 });
         });
 

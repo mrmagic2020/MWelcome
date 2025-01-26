@@ -1,12 +1,32 @@
 #include <ll/api/form/CustomForm.h>
+#include <ll/api/form/ModalForm.h>
 #include <ll/api/i18n/I18n.h>
 
 #include "Config.h"
 #include "magic_enum.hpp"
 
+using ll::i18n_literals::operator""_tr;
+
+ll::form::ModalForm* createSettingsSuccessFeedbackForm()
+{
+    const auto form = new ll::form::ModalForm();
+    form->setTitle("ui.settings.modal.success.title"_tr());
+    form->setContent("ui.settings.modal.success.content"_tr());
+    form->setUpperButton("ui.settings.modal.success.upper_button"_tr());
+    form->setLowerButton("ui.settings.modal.success.lower_button"_tr());
+    return form;
+}
+
+ll::form::ModalForm* createSettingsFailureFeedbackForm()
+{
+    const auto form = new ll::form::ModalForm();
+    form->setTitle("ui.settings.modal.failure.title"_tr());
+    form->setContent("ui.settings.modal.failure.content"_tr());
+    return form;
+}
+
 namespace mwelcome::ui
 {
-using ll::i18n_literals::operator""_tr;
 
 ll::form::CustomForm* createSettingsForm(const Config& config)
 {
@@ -27,5 +47,11 @@ ll::form::CustomForm* createSettingsForm(const Config& config)
                       config.msg_content);
 
     return form;
+}
+
+ll::form::ModalForm* createSettingsFeedbackForm(const bool success)
+{
+    if (success) return createSettingsSuccessFeedbackForm();
+    return createSettingsFailureFeedbackForm();
 }
 }  // namespace mwelcome::ui

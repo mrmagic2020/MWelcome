@@ -1,18 +1,28 @@
 {
-  "command": {
-    "mwelcome": {
-      "description": "配置 MWelcome。",
-      "success": "[MWelcome] §a设置更新成功。",
-      "error": "[MWelcome] §c设置更新失败。"
+    "command": {
+        "mwelcome": {
+            "description": "配置 MWelcome。"
+        }
+    },
+    "ui": {
+        "settings": {
+            "title": "MWelcome 设置",
+            "welcome_type": "欢迎类型",
+            "toast_title": "Toast 标题",
+            "toast_content": "Toast 内容",
+            "msg_content": "普通消息内容",
+            "modal": {
+                "success": {
+                    "title": "成功",
+                    "content": "设置更新成功！",
+                    "upper_button": "预览（仅你可见）",
+                    "lower_button": "关闭"
+                },
+                "failure": {
+                    "title": "错误",
+                    "content": "设置更新失败。"
+                }
+            }
+        }
     }
-  },
-  "ui": {
-    "settings": {
-      "title": "MWelcome 设置",
-      "welcome_type": "欢迎类型",
-      "toast_title": "Toast 标题",
-      "toast_content": "Toast 内容",
-      "msg_content": "普通消息内容"
-    }
-  }
 }

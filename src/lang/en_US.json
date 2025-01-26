@@ -1,18 +1,28 @@
 {
-  "command": {
-    "mwelcome": {
-      "description": "Configure MWelcome settings.",
-      "success": "[MWelcome] §aSettings updated successfully.",
-      "error": "[MWelcome] §cFailed to update settings."
+    "command": {
+        "mwelcome": {
+            "description": "Configure MWelcome settings."
+        }
+    },
+    "ui": {
+        "settings": {
+            "title": "MWelcome Settings",
+            "welcome_type": "Welcome Type",
+            "toast_title": "Toast Title",
+            "toast_content": "Toast Content",
+            "msg_content": "Message Content",
+            "modal": {
+                "success": {
+                    "title": "Success",
+                    "content": "Settings updated successfully.",
+                    "upper_button": "Preview (Only Shown to You)",
+                    "lower_button": "Close"
+                },
+                "failure": {
+                    "title": "Error",
+                    "content": "Failed to update settings."
+                }
+            }
+        }
     }
-  },
-  "ui": {
-    "settings": {
-      "title": "MWelcome Settings",
-      "welcome_type": "Welcome Type",
-      "toast_title": "Toast Title",
-      "toast_content": "Toast Content",
-      "msg_content": "Message Content"
-    }
-  }
 }

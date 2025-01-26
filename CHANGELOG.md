@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Added
+
+- Operators can now preview welcome messages in-game with GUI after saving configuration options.
+
 ## [0.2.1] - 2025-01-25
 
 ### Added
