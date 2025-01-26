@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [0.3.0] - 2025-01-26
+
 ### Added
 
 - Operators can now preview welcome messages in-game with GUI after saving configuration options.
@@ -46,6 +48,7 @@
 
 All notable changes to this project will be documented in this file.
 
+[0.3.0]: https://github.com/mrmagic2020/MWelcome/releases/v0.3.0
 [0.2.1]: https://github.com/mrmagic2020/MWelcome/releases/v0.2.1
 [0.2.0]: https://github.com/mrmagic2020/MWelcome/releases/v0.2.0
 [0.1.1]: https://github.com/mrmagic2020/MWelcome/releases/v0.1.1
