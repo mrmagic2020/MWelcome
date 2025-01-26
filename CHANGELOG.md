@@ -8,6 +8,12 @@
 
 - Option to send the welcome message to every online player when a player joins the server.
 
+- Command alias `/mwe`.
+
+### Removed
+
+- Support for Levilamina <=1.0.0-rc.3.
+
 ## [0.2.1] - 2025-01-25
 
 ### Added

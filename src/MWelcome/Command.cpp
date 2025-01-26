@@ -35,6 +35,7 @@ bool init()
         ll::command::CommandRegistrar::getInstance().getOrCreateCommand(
             "mwelcome", "command.mwelcome.description"_tr(),
             CommandPermissionLevel::GameDirectors);
+    command.alias("mwe");
     command.overload().execute(
         [](CommandOrigin const& origin, CommandOutput& output)
         {
