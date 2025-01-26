@@ -10,7 +10,7 @@ A simple customizable plugin to welcome your fellow players to your server.
 
 ### Manual Installation
 
-1. Download the latest release from the [releases page](github.com/mrmagic2020/MWelcome/releases).
+1. Download the latest release from the [releases page](https://github.com/mrmagic2020/MWelcome/releases/latest).
 
 2. Unpack **MWelcome-windows-x64.zip**.
 
@@ -23,7 +23,10 @@ Upon first run, MWelcome will generate a **config.json** file in **plugins/MWelc
 ```jsonc
 {
   // The version of the config file. Do NOT modify.
-  "version": 1,
+  "version": 2,
+  
+    // Whether to send the welcome message to every online player when a player joins the server.
+  "send_to_all_players": false,
 
   // The type of welcome message to send. Options: "chat", "tip", "toast".
   "type": "toast",
@@ -48,3 +51,13 @@ Upon first run, MWelcome will generate a **config.json** file in **plugins/MWelc
 | toast | ![toast](https://github.com/mrmagic2020/MWelcome/blob/main/assets/toast.jpg?raw=true) |
 | chat  | ![chat](https://github.com/mrmagic2020/MWelcome/blob/main/assets/chat.jpg?raw=true)   |
 | tip   | ![tip](https://github.com/mrmagic2020/MWelcome/blob/main/assets/tip.jpg?raw=true)     |
+
+## Contributing
+
+Ask questions by creating an issue.
+
+PRs accepted.
+
+## License
+
+CC0-1.0 © mrmagic202020
