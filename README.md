@@ -1,5 +1,7 @@
 # MWelcome
 
+English | [中文](https://github.com/mrmagic2020/MWelcome/blob/main/README_zh.md)
+
 A simple customizable plugin to welcome your fellow players to your server.
 
 ## Installation
@@ -25,7 +27,7 @@ Upon first run, MWelcome will generate a **config.json** file in **plugins/MWelc
   // The version of the config file. Do NOT modify.
   "version": 2,
   
-    // Whether to send the welcome message to every online player when a player joins the server.
+   // Whether to send the welcome message to every online player when a player joins the server.
   "send_to_all_players": false,
 
   // The type of welcome message to send. Options: "chat", "tip", "toast".
